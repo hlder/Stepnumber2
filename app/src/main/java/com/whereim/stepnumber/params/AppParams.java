@@ -16,6 +16,8 @@ public class AppParams {
     public static final String DB_NAME="db1";
     public static final int DB_VERSION=1;
 
+    /**记录的间隔时间必须大于这个时间*/
+    public static final long stepGapTime=1000;
 
 
 

@@ -3,4 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="notification_title_today">今天:</string>
+    <string name="notification_title_step">步</string>
+    <string name="notification_content">为更好的每一天</string>
 </resources>

@@ -1,55 +1,40 @@
 package com.whereim.stepnumber;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RemoteViews;
 
-import com.whereim.stepnumber.bean.RecordBean;
-import com.whereim.stepnumber.manager.DbManager;
+import com.whereim.stepnumber.service.MonitorService;
 import com.whereim.stepnumber.utils.SensorUtils;
-
-import java.util.Date;
 
 
 public class MainActivity extends Activity {
-    private SensorManager sensorManager;
-    private final String TAG="dddd";
 
-    private boolean isStep=true;//是否记录步数
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        prepare();
-
-
-    }
-    private void prepare(){
-        sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
-        Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        sensorManager.registerListener(new SensorEventListener() {
+//        new SensorUtils(this);
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSensorChanged(SensorEvent event) {
-                boolean flag = SensorUtils.isAStep(MainActivity.this, event);//返回true表示走了一步
-                if (isStep&&flag) {//需要记录步数(步数加一)
-                    isStep = false;
-                } else if(isStep&&!flag){//不需要记录步数，表示已经记录了，且数据降下了
-                    isStep = true;
-                }
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this, MonitorService.class);
+                startService(intent);
             }
+        });
 
-            @Override
-            public void onAccuracyChanged(Sensor sensor, int accuracy) {
-            }
-        }, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+
     }
 
 

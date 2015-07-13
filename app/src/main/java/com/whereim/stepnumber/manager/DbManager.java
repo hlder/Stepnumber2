@@ -1,8 +1,10 @@
 package com.whereim.stepnumber.manager;
 
 import android.content.Context;
+import android.database.Cursor;
 
 import com.lidroid.xutils.DbUtils;
+import com.lidroid.xutils.db.sqlite.Selector;
 import com.lidroid.xutils.exception.DbException;
 import com.whereim.stepnumber.params.AppParams;
 
@@ -54,6 +56,19 @@ public class DbManager {
         } catch (DbException e) {
         }
         return false;
+    }
+
+    public static Object findFrist(Context context,Selector selector){
+        try {
+            return getInstance(context).findFirst(selector);
+        } catch (DbException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Cursor execQuery(Context context,String sql) throws DbException {
+        return getInstance(context).execQuery(sql);
     }
 
 }
