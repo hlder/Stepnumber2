@@ -17,7 +17,7 @@ public class DbFactory {
 
 
 
-    public static long queryStepCount(Context context){
+    public static long queryTodayStepCount(Context context){
         Calendar calendar=Calendar.getInstance();
         calendar.set(calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH),0,0,0);
         String sql="select count(*) from "+ AppParams.TABLE_NAME_RECORD+" where time>"+calendar.getTimeInMillis();

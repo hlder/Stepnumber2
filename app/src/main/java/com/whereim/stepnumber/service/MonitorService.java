@@ -27,28 +27,16 @@ public class MonitorService extends Service {
     private Executor pool= Executors.newSingleThreadExecutor();
     private ServiceNotificationUtil notificationUtil;
     long count;
+
     @Override
     public void onCreate() {
         super.onCreate();
         prePare();
 
-         count = DbFactory.queryStepCount(this);
-        Intent intent=new Intent(this, MainActivity.class);//¹ÒÔØµÄintent
+        count = DbFactory.queryTodayStepCount(this);
+        Intent intent=new Intent(this, MainActivity.class);
         notificationUtil=new ServiceNotificationUtil();
         notificationUtil.serviceStartForeground(this,intent,getString(R.string.notification_title_today)+""+count+getString(R.string.notification_title_step),""+getString(R.string.notification_content));
-        new Thread(){
-            @Override
-            public void run() {
-                while(true){
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                    }
-                    Log.d("dddd","count:"+count);
-                    notificationUtil.updateNotifiText(getString(R.string.notification_title_today)+""+(count++)+getString(R.string.notification_title_step),""+getString(R.string.notification_content));
-                }
-            }
-        }.start();
     }
     private void prePare(){
         sensorUtil=new SensorUtils(this, new SensorUtils.OnStepListener() {
@@ -67,11 +55,12 @@ public class MonitorService extends Service {
         public void run() {
             long time=new Date().getTime();
             RecordBean lastBean= (RecordBean) DbManager.findFrist(MonitorService.this, Selector.from(RecordBean.class).orderBy("id",true));
-            if(lastBean==null||Math.abs(lastBean.getTime() - time)> AppParams.stepGapTime){//¼ä¸ô´óÓÚ1ÃëÔÙ¼ÇÂ¼
+            if(lastBean==null||Math.abs(lastBean.getTime() - time)> AppParams.stepGapTime){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ù¼ï¿½Â¼
                 RecordBean bean=new RecordBean();
                 bean.setRage(rage);
                 bean.setTime(new Date().getTime());
                 DbManager.save(MonitorService.this, bean);
+                notificationUtil.updateNotifiText(getString(R.string.notification_title_today) + "" + (count++) + getString(R.string.notification_title_step), "" + getString(R.string.notification_content));
             }
         }
     }

@@ -12,9 +12,7 @@ public class RecordBean {
     /**id*/
     @Id(column = "id")
     private int id;
-    /**¼ÇÂ¼Ê±¼ä*/
     private long time;
-    /**Õñ·ù*/
     private int rage;
     public int getId() {
         return id;

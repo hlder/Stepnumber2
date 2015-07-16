@@ -14,7 +14,6 @@ import com.whereim.stepnumber.params.AppParams;
 import java.util.Date;
 
 /**
- * 读步器
  * Created by HLD on 2015/7/3.
  */
 public class SensorUtils {
@@ -22,7 +21,7 @@ public class SensorUtils {
     private SensorManager sensorManager;
     private OnStepListener onStepListener;
 
-    private boolean isStep=true;//是否记录步数
+    private boolean isStep=true;//
 
     public SensorUtils(Context context,OnStepListener onStepListener) {
         this.context=context;
@@ -49,17 +48,15 @@ public class SensorUtils {
     }
 
     /**
-     * 判断是否算走了一步
      */
     public  void isAStep(Context context,SensorEvent event){
-        int value = SpManager.getInt(context, AppParams.SP_KEY_SENSOR_VALUE,13);//摇一摇阀值,不同手机能达到的最大值不同,如某品牌手机只能达到20
-        //values[0]:X轴，values[1]：Y轴，values[2]：Z轴
+        int value = SpManager.getInt(context, AppParams.SP_KEY_SENSOR_VALUE,13);//
         float[] values = event.values;
         int x = (int) values[0];
         int y = (int) values[1];
         int z = (int) values[2];
         int mul=(x*x+y*y+z*z);
-        if(mul<maxSize&&mul>minSize){//表示到尽头了，初始化一下
+        if(mul<maxSize&&mul>minSize){
             if(mul>(value*value)) {
                 Log.d("dddd", "" + mul);
                 if(onStepListener!=null){

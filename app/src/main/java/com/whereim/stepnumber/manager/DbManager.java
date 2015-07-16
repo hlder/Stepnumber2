@@ -17,7 +17,6 @@ public class DbManager {
         if(db==null){
             db=DbUtils.create(context, AppParams.DB_NAME, AppParams.DB_VERSION, new DbUtils.DbUpgradeListener() {
                 /**
-                 * Êý¾Ý¿âÉý¼¶
                  * @param dbUtils
                  * @param i
                  * @param i1
@@ -31,7 +30,7 @@ public class DbManager {
         return db;
     }
     /**
-     * ±£´æÊý¾Ý
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param bean
      */
     public static boolean save(Context context,Object bean){
@@ -44,7 +43,7 @@ public class DbManager {
     }
 
     /**
-     * É¾³ýÊý¾Ý
+     * É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param context
      * @param bean
      * @return

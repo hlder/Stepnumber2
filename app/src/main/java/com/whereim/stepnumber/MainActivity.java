@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.RemoteViews;
 
 import com.whereim.stepnumber.service.MonitorService;
@@ -32,7 +33,6 @@ public class MainActivity extends Activity {
                 startService(intent);
             }
         });
-
 
 
     }
