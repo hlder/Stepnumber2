@@ -11,7 +11,7 @@ public class EventBus {
     private Executor pool=Executors.newCachedThreadPool();
 
     private HashSet<EventListener> setListener;
-    public void EventBus(){
+    public EventBus(){
         setListener=new HashSet<EventListener>();
     }
     public void register(EventListener listener){

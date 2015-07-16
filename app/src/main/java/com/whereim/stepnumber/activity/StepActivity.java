@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.view.ViewAnimationUtils;
 import android.widget.TextView;
 
+import com.whereim.stepnumber.AppActivity;
 import com.whereim.stepnumber.R;
 import com.whereim.stepnumber.bean.RecordBean;
 import com.whereim.stepnumber.library.eventbus.EventBus;
@@ -17,7 +18,7 @@ import com.whereim.stepnumber.utils.DbFactory;
 /**
  * Created by HLD on 2015/7/13.
  */
-public class StepActivity extends Activity implements EventListener{
+public class StepActivity extends AppActivity implements EventListener{
     private TextView txtStep;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class StepActivity extends Activity implements EventListener{
         EventBusSingle.register(this);
         setContentView(R.layout.activity_step);
         prepare();
+        init();
     }
     @Override
     public void onEvent(Object obj) {
