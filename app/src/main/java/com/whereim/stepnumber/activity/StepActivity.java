@@ -27,6 +27,7 @@ public class StepActivity extends AppActivity implements EventListener{
         setContentView(R.layout.activity_step);
         prepare();
         init();
+        String str="acas";
     }
     @Override
     public void onEvent(Object obj) {
