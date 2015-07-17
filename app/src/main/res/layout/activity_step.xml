@@ -19,7 +19,6 @@
         android:orientation="vertical"
         android:layout_alignParentRight="true">
         <TextView
-            android:id="@+id/txtStep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20步"/>
@@ -28,12 +27,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_centerInParent="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="今日:"/>
         <TextView
+            android:id="@+id/txtStep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="20步"/>

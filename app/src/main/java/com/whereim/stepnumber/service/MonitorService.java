@@ -61,7 +61,8 @@ public class MonitorService extends Service {
                 bean.setRage(rage);
                 bean.setTime(new Date().getTime());
                 DbManager.save(MonitorService.this, bean);
-                notificationUtil.updateNotifiText(getString(R.string.notification_title_today) + "" + (count++) + getString(R.string.notification_title_step), "" + getString(R.string.notification_content));
+                count++;
+                notificationUtil.updateNotifiText(getString(R.string.notification_title_today) + "" + count + getString(R.string.notification_title_step), "" + getString(R.string.notification_content));
                 EventManager.sendEvent(AppParams.EVENT_STEP,bean);
             }
         }

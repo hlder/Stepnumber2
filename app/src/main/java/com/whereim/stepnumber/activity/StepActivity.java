@@ -1,7 +1,10 @@
 package com.whereim.stepnumber.activity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.whereim.stepnumber.AppActivity;
 import com.whereim.stepnumber.R;
