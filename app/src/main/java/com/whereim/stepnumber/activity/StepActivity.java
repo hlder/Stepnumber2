@@ -5,9 +5,10 @@ import android.widget.TextView;
 
 import com.whereim.stepnumber.AppActivity;
 import com.whereim.stepnumber.R;
-import com.whereim.stepnumber.bean.EventBean;
+import com.whereim.stepnumber.library.eventbus.EventBean;
 import com.whereim.stepnumber.library.eventbus.EventBusSingle;
 import com.whereim.stepnumber.library.eventbus.EventListener;
+import com.whereim.stepnumber.params.AppParams;
 import com.whereim.stepnumber.utils.DbFactory;
 
 /**
@@ -15,6 +16,7 @@ import com.whereim.stepnumber.utils.DbFactory;
  */
 public class StepActivity extends AppActivity implements EventListener{
     private TextView txtStep;
+    private long steps=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +26,23 @@ public class StepActivity extends AppActivity implements EventListener{
         init();
     }
     @Override
-    public void onEvent(Object obj) {
-
+    public void onEvent(EventBean bean) {
+        switch (bean.getEventType()){
+            case AppParams.EVENT_STEP:
+                runOnUiThread(stepRunnable);
+                break;
+        }
     }
+    private Runnable stepRunnable=new Runnable() {
+        @Override
+        public void run() {
+            steps++;
+            txtStep.setText(""+steps);
+        }
+    };
+
     private void init(){
-        long steps = DbFactory.queryTodayStepCount(this);
+        steps = DbFactory.queryTodayStepCount(this);
         txtStep.setText(""+steps);
     }
     private void prepare(){
@@ -39,5 +53,6 @@ public class StepActivity extends AppActivity implements EventListener{
         super.onDestroy();
         EventBusSingle.unregister(this);
     }
+
 
 }

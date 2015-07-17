@@ -1,6 +1,6 @@
 package com.whereim.stepnumber.manager;
 
-import com.whereim.stepnumber.bean.EventBean;
+import com.whereim.stepnumber.library.eventbus.EventBean;
 import com.whereim.stepnumber.library.eventbus.EventBusSingle;
 
 /**

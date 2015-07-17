@@ -23,6 +23,7 @@ public class WelcomeActivity extends AppActivity {
             public void run() {
                 Intent intent=new Intent(WelcomeActivity.this,StepActivity.class);
                 startActivity(intent);
+                WelcomeActivity.this.finish();
             }
         },1000);
     }

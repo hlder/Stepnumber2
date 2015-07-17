@@ -20,12 +20,12 @@ public class EventBus {
     public void unregister(EventListener listener){
         setListener.remove(listener);
     }
-    public void sendEvent(Object obj){
+    public void sendEvent(EventBean obj){
         pool.execute(new MyRunnable(obj));
     }
     private class MyRunnable implements  Runnable{
-        private Object obj;
-        public MyRunnable(Object obj){
+        private EventBean obj;
+        public MyRunnable(EventBean obj){
             this.obj=obj;
         }
         @Override

@@ -17,7 +17,7 @@ public class EventBusSingle {
     public static void unregister(EventListener listener){
         getInstance().unregister(listener);
     }
-    public static void sendEvent(Object obj){
+    public static void sendEvent(EventBean obj){
         getInstance().sendEvent(obj);
     }
 

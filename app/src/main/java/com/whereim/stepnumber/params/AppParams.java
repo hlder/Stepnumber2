@@ -10,6 +10,7 @@ public class AppParams {
 
     public static final String SP_KEY_SENSOR_VALUE="sensorvalue";
 
+    public static final int EVENT_STEP=1;
 
 
     public static final String DB_NAME="db1";
