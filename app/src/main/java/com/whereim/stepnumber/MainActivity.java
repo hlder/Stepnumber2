@@ -1,21 +1,13 @@
 package com.whereim.stepnumber;
 
 import android.app.Activity;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.widget.RemoteViews;
 
 import com.whereim.stepnumber.service.MonitorService;
-import com.whereim.stepnumber.utils.SensorUtils;
-
 
 public class MainActivity extends Activity {
 

@@ -1,18 +1,13 @@
 package com.whereim.stepnumber.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.ViewAnimationUtils;
 import android.widget.TextView;
 
 import com.whereim.stepnumber.AppActivity;
 import com.whereim.stepnumber.R;
-import com.whereim.stepnumber.bean.RecordBean;
-import com.whereim.stepnumber.library.eventbus.EventBus;
+import com.whereim.stepnumber.bean.EventBean;
 import com.whereim.stepnumber.library.eventbus.EventBusSingle;
 import com.whereim.stepnumber.library.eventbus.EventListener;
-import com.whereim.stepnumber.manager.DbManager;
 import com.whereim.stepnumber.utils.DbFactory;
 
 /**
@@ -27,7 +22,6 @@ public class StepActivity extends AppActivity implements EventListener{
         setContentView(R.layout.activity_step);
         prepare();
         init();
-        String str="acas";
     }
     @Override
     public void onEvent(Object obj) {
@@ -45,4 +39,5 @@ public class StepActivity extends AppActivity implements EventListener{
         super.onDestroy();
         EventBusSingle.unregister(this);
     }
+
 }
