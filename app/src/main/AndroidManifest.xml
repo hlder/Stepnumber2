@@ -16,10 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.whereim.stepnumber.activity.StepActivity">
-
         </activity>
-
-
         <service android:name=".service.MonitorService"></service>
     </application>
 
